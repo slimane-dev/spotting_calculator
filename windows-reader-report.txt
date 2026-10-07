@@ -1,4 +1,4 @@
-Actual application SHA256: 958E92DDDB147E916C1E3B058FED4504DDFABE8281795A57A56B43C71CD3D8A3
+Actual application SHA256: F1515A1EC426F158B3053EDF358FA9155431542533E0D822125B49C30D2F7E06
 Runner: Microsoft Windows NT 10.0.26100.0
 
 Name    Enabled DefaultOutboundAction
@@ -19,10 +19,27 @@ Executing on Microsoft Windows 10.0.26100; process X64
 PASS Windows: compiled application resources and main-window XAML initialize
 PASS Windows: job writes use the isolated test root
 PASS Windows: main window offers a named picture-import action
+PASS Windows: rendered calculation card headings use the green foreground
+PASS Windows: Live results remains a visible green heading above the output scroller
+PASS Windows: manual casing preset fills its actual ID
+PASS Windows: manual drill-pipe preset fills OD, ID and weight
+PASS Windows: manual tubing preset fills the requested 3.5-inch dimensions
+PASS Windows: preset previews show actual IDs before adding rows
+PASS Windows: manual preset IDs remain editable when other values change
 Probing picture-review constructor before its user-facing handler...
 PASS Windows: picture-review constructor and first render succeed
 PASS Windows: pending row state permits picture import
+PASS Windows: main window exposes a direct picture-paste action
+PASS Windows: main Paste picture opens and reads a copied bitmap without a file chooser
+PASS Windows: the import window offers its own visible paste button
+PASS Windows: clipboard PNG data is decoded and its well labels are extracted
+PASS Windows: native enhanced-metafile clipboard pictures are rasterized and read
+PASS Windows: pasting pictures leaves the current job unchanged
+Clipboard keyboard focus: editor focused=True; reader active=True; foreground=0x20198; reader HWND=0x20198
+PASS Windows: clipboard keyboard check focuses the review text editor
+PASS Windows: Ctrl+V in a review text field performs ordinary text paste
 PASS Windows: picture reader initializes as a visible owned window
+PASS Windows: owned picture review uses the application's single taskbar entry
 PASS Windows: picture reader leaves the calculator enabled
 PASS Windows: local picture chooser is prominent and discoverable
 PASS Windows: reading is unavailable until a picture is selected
@@ -39,14 +56,27 @@ PASS Windows: cement review excludes ESP references
 PASS Windows: OCR completion does not mutate the current job
 PASS Windows: reviewed extracted values remain editable
 PASS Windows: scan completion restores idle controls
+Background focus: activation returned=True; main active=True; reader active=False; foreground=0x2015A; main HWND=0x2015A
+PASS Windows: background image reading leaves calculator focus in place
+PASS Windows: image review supplies the common casing and liner IDs
+PASS Windows: missing image weights are visibly marked as assumptions
+PASS Windows: an explicit casing weight selects its catalogue ID
+PASS Windows: an edited reviewed ID survives an unrelated depth change
 PASS Windows: apply preserves edits made while the reader is open
 PASS Windows: apply commits edited geometry and closes its reader
+Apply focus: main active=True; foreground=0x2015A; main HWND=0x2015A
+PASS Windows: explicit Apply brings the calculator forward
+PASS Windows: Apply selects the tab belonging to the reviewed operation
 PASS Windows: an old review cannot overwrite a newly opened job
 PASS Windows: closing review clears its owner reference
 PASS Windows: kill/pill review exposes editable ESP depth controls
 PASS Windows: closing during a scan cancels without blocking the calculator
 PASS Windows: kill import fits against the latest string lengths and preserves pump edits
 PASS Windows: desktop save retains imported values in the isolated library
+PASS Windows: entering an ESP reference offers the default tubing
+PASS Windows: an empty kill string receives editable 3.5-inch 9.3-lb/ft tubing
+PASS Windows: explicitly disabling default tubing survives a reference-depth edit
+PASS Windows: disabled default tubing preserves the user's existing dimensions and length
 PASS Windows: a stalled child hits its deadline while WPF remains responsive
 PASS Windows: deadline reaps the child and removes its request folder
 PASS Windows: cancellation kills an already running stalled child promptly
@@ -57,5 +87,5 @@ PASS Windows: portable app worker returns a complete successful response
 Packaged Windows native engine: 5.0.0
 PASS Windows: actual portable worker reads the independently annotated liner label
 PASS Windows: portable worker leaves the first editor responsive and unchanged
-38 Windows desktop/isolated-reader checks passed.
+65 Windows desktop/isolated-reader checks passed.
 Harness exit code: 0
