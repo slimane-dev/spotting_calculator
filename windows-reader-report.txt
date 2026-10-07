@@ -51,9 +51,11 @@ PASS Windows: a stalled child hits its deadline while WPF remains responsive
 PASS Windows: deadline reaps the child and removes its request folder
 PASS Windows: cancellation kills an already running stalled child promptly
 PASS Windows: the actual portable app is available for worker-startup checks
-FAIL: System.InvalidOperationException: portable app worker exits without opening the editor or mutex prompt
-   at WellSpot.Desktop.Checks.Program.Check(String name, Boolean condition) in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 353
-   at WellSpot.Desktop.Checks.Program.CheckPackagedWorkerAsync(String executable, BitmapSource bitmap, Decimal expectedTop) in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 316
-   at WellSpot.Desktop.Checks.Program.RunAsync(App app, String appExe) in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 250
-   at WellSpot.Desktop.Checks.Program.<>c__DisplayClass4_0.<<Main>b__2>d.MoveNext() in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 71
-Harness exit code: 1
+Portable worker exit: 0x00000000; response present: True
+PASS Windows: portable app worker exits without opening the editor or mutex prompt
+PASS Windows: portable app worker returns a complete successful response
+Packaged Windows native engine: 5.0.0
+PASS Windows: actual portable worker reads the independently annotated liner label
+PASS Windows: portable worker leaves the first editor responsive and unchanged
+38 Windows desktop/isolated-reader checks passed.
+Harness exit code: 0
