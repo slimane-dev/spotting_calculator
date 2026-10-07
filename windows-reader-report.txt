@@ -19,5 +19,25 @@ Executing on Microsoft Windows 10.0.26100; process X64
 PASS Windows: compiled application resources and main-window XAML initialize
 PASS Windows: job writes use the isolated test root
 PASS Windows: main window offers a named picture-import action
-FAIL: Windows checks exceeded the 180-second process watchdog.
-Harness exit code: 2
+Probing picture-review constructor before its user-facing handler...
+FAIL: System.Windows.Markup.XamlParseException: Provide value on 'System.Windows.Baml2006.TypeConverterMarkupExtension' threw an exception.
+ ---> System.ArgumentException: Auto is not a valid value for Double. (Parameter 'value')
+ ---> System.FormatException: The input string 'Auto' was not in a correct format.
+   at System.Number.ThrowFormatException[TChar](ReadOnlySpan`1 value)
+   at System.Double.Parse(String s, NumberStyles style, IFormatProvider provider)
+   at System.ComponentModel.DoubleConverter.FromString(String value, NumberFormatInfo formatInfo)
+   at System.ComponentModel.BaseNumberConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.BaseNumberConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at MS.Internal.Xaml.Runtime.ClrObjectRuntime.CallProvideValue(MarkupExtension me, IServiceProvider serviceProvider)
+   --- End of inner exception stack trace ---
+   at System.Windows.Markup.XamlReader.RewrapException(Exception e, IXamlLineInfo lineInfo, Uri baseUri)
+   at System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
+   at System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)
+   at System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)
+   at System.Windows.Application.LoadComponent(Object component, Uri resourceLocator)
+   at WellSpot.Desktop.SchematicWindow.InitializeComponent() in /workspace/spotting_calculator/src/WellSpot.Desktop/SchematicWindow.xaml:line 1
+   at WellSpot.Desktop.SchematicWindow..ctor(Window owner, SchematicMode mode, IEnumerable`1 presets, Func`2 applyReviewed, String jobRoot, Boolean openPictureOnShown) in /workspace/spotting_calculator/src/WellSpot.Desktop/SchematicWindow.xaml.cs:line 52
+   at WellSpot.Desktop.Checks.Program.RunAsync(App app, String appExe) in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 109
+   at WellSpot.Desktop.Checks.Program.<>c__DisplayClass4_0.<<Main>b__2>d.MoveNext() in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 71
+Harness exit code: 1
