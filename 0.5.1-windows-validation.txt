@@ -1,0 +1,61 @@
+Actual application SHA256: 958E92DDDB147E916C1E3B058FED4504DDFABE8281795A57A56B43C71CD3D8A3
+Runner: Microsoft Windows NT 10.0.26100.0
+
+Name    Enabled DefaultOutboundAction
+----    ------- ---------------------
+Domain     True                 Allow
+Private    True                 Allow
+Public     True                 Allow
+
+
+
+DisplayName                 Enabled Direction Action
+-----------                 ------- --------- ------
+WellSpotAppOfflineCheck        True  Outbound  Block
+WellSpotHarnessOfflineCheck    True  Outbound  Block
+
+
+Executing on Microsoft Windows 10.0.26100; process X64
+PASS Windows: compiled application resources and main-window XAML initialize
+PASS Windows: job writes use the isolated test root
+PASS Windows: main window offers a named picture-import action
+Probing picture-review constructor before its user-facing handler...
+PASS Windows: picture-review constructor and first render succeed
+PASS Windows: pending row state permits picture import
+PASS Windows: picture reader initializes as a visible owned window
+PASS Windows: picture reader leaves the calculator enabled
+PASS Windows: local picture chooser is prominent and discoverable
+PASS Windows: reading is unavailable until a picture is selected
+PASS Windows: repeated import clicks reuse one reader
+PASS Windows: reader dimensions and minimums fit the active work area
+PASS Windows: Windows image decoder loads and freezes the actual PNG
+PASS Windows: selected picture is displayed and enables reading
+PASS Windows: an active scan leaves cancel and calculator usable
+PASS Windows: dispatcher processes events during isolated native OCR
+PASS Windows: bundled Windows OCR returns evidence through the real reader
+PASS Windows: native OCR extracts liner top, size and parent casing
+PASS Windows: native OCR keeps working bottom and perforation separate
+PASS Windows: cement review excludes ESP references
+PASS Windows: OCR completion does not mutate the current job
+PASS Windows: reviewed extracted values remain editable
+PASS Windows: scan completion restores idle controls
+PASS Windows: apply preserves edits made while the reader is open
+PASS Windows: apply commits edited geometry and closes its reader
+PASS Windows: an old review cannot overwrite a newly opened job
+PASS Windows: closing review clears its owner reference
+PASS Windows: kill/pill review exposes editable ESP depth controls
+PASS Windows: closing during a scan cancels without blocking the calculator
+PASS Windows: kill import fits against the latest string lengths and preserves pump edits
+PASS Windows: desktop save retains imported values in the isolated library
+PASS Windows: a stalled child hits its deadline while WPF remains responsive
+PASS Windows: deadline reaps the child and removes its request folder
+PASS Windows: cancellation kills an already running stalled child promptly
+PASS Windows: the actual portable app is available for worker-startup checks
+Portable worker exit: 0x00000000; response present: True
+PASS Windows: portable app worker exits without opening the editor or mutex prompt
+PASS Windows: portable app worker returns a complete successful response
+Packaged Windows native engine: 5.0.0
+PASS Windows: actual portable worker reads the independently annotated liner label
+PASS Windows: portable worker leaves the first editor responsive and unchanged
+38 Windows desktop/isolated-reader checks passed.
+Harness exit code: 0
