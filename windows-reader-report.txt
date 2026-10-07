@@ -1,4 +1,4 @@
-Actual application SHA256: D0801A32B0F6225752477C348F465A5E5319FFC1C1DA4A55694E10058DB30A0E
+Actual application SHA256: 958E92DDDB147E916C1E3B058FED4504DDFABE8281795A57A56B43C71CD3D8A3
 Runner: Microsoft Windows NT 10.0.26100.0
 
 Name    Enabled DefaultOutboundAction
@@ -20,24 +20,40 @@ PASS Windows: compiled application resources and main-window XAML initialize
 PASS Windows: job writes use the isolated test root
 PASS Windows: main window offers a named picture-import action
 Probing picture-review constructor before its user-facing handler...
-FAIL: System.Windows.Markup.XamlParseException: Provide value on 'System.Windows.Baml2006.TypeConverterMarkupExtension' threw an exception.
- ---> System.ArgumentException: Auto is not a valid value for Double. (Parameter 'value')
- ---> System.FormatException: The input string 'Auto' was not in a correct format.
-   at System.Number.ThrowFormatException[TChar](ReadOnlySpan`1 value)
-   at System.Double.Parse(String s, NumberStyles style, IFormatProvider provider)
-   at System.ComponentModel.DoubleConverter.FromString(String value, NumberFormatInfo formatInfo)
-   at System.ComponentModel.BaseNumberConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
-   --- End of inner exception stack trace ---
-   at System.ComponentModel.BaseNumberConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
-   at MS.Internal.Xaml.Runtime.ClrObjectRuntime.CallProvideValue(MarkupExtension me, IServiceProvider serviceProvider)
-   --- End of inner exception stack trace ---
-   at System.Windows.Markup.XamlReader.RewrapException(Exception e, IXamlLineInfo lineInfo, Uri baseUri)
-   at System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
-   at System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)
-   at System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)
-   at System.Windows.Application.LoadComponent(Object component, Uri resourceLocator)
-   at WellSpot.Desktop.SchematicWindow.InitializeComponent() in /workspace/spotting_calculator/src/WellSpot.Desktop/SchematicWindow.xaml:line 1
-   at WellSpot.Desktop.SchematicWindow..ctor(Window owner, SchematicMode mode, IEnumerable`1 presets, Func`2 applyReviewed, String jobRoot, Boolean openPictureOnShown) in /workspace/spotting_calculator/src/WellSpot.Desktop/SchematicWindow.xaml.cs:line 52
-   at WellSpot.Desktop.Checks.Program.RunAsync(App app, String appExe) in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 109
+PASS Windows: picture-review constructor and first render succeed
+PASS Windows: pending row state permits picture import
+PASS Windows: picture reader initializes as a visible owned window
+PASS Windows: picture reader leaves the calculator enabled
+PASS Windows: local picture chooser is prominent and discoverable
+PASS Windows: reading is unavailable until a picture is selected
+PASS Windows: repeated import clicks reuse one reader
+PASS Windows: reader dimensions and minimums fit the active work area
+PASS Windows: Windows image decoder loads and freezes the actual PNG
+PASS Windows: selected picture is displayed and enables reading
+PASS Windows: an active scan leaves cancel and calculator usable
+PASS Windows: dispatcher processes events during isolated native OCR
+PASS Windows: bundled Windows OCR returns evidence through the real reader
+PASS Windows: native OCR extracts liner top, size and parent casing
+PASS Windows: native OCR keeps working bottom and perforation separate
+PASS Windows: cement review excludes ESP references
+PASS Windows: OCR completion does not mutate the current job
+PASS Windows: reviewed extracted values remain editable
+PASS Windows: scan completion restores idle controls
+PASS Windows: apply preserves edits made while the reader is open
+PASS Windows: apply commits edited geometry and closes its reader
+PASS Windows: an old review cannot overwrite a newly opened job
+PASS Windows: closing review clears its owner reference
+PASS Windows: kill/pill review exposes editable ESP depth controls
+PASS Windows: closing during a scan cancels without blocking the calculator
+PASS Windows: kill import fits against the latest string lengths and preserves pump edits
+PASS Windows: desktop save retains imported values in the isolated library
+PASS Windows: a stalled child hits its deadline while WPF remains responsive
+PASS Windows: deadline reaps the child and removes its request folder
+PASS Windows: cancellation kills an already running stalled child promptly
+PASS Windows: the actual portable app is available for worker-startup checks
+FAIL: System.InvalidOperationException: portable app worker exits without opening the editor or mutex prompt
+   at WellSpot.Desktop.Checks.Program.Check(String name, Boolean condition) in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 353
+   at WellSpot.Desktop.Checks.Program.CheckPackagedWorkerAsync(String executable, BitmapSource bitmap, Decimal expectedTop) in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 316
+   at WellSpot.Desktop.Checks.Program.RunAsync(App app, String appExe) in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 250
    at WellSpot.Desktop.Checks.Program.<>c__DisplayClass4_0.<<Main>b__2>d.MoveNext() in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 71
 Harness exit code: 1
