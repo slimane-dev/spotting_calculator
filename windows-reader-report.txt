@@ -1,4 +1,4 @@
-Actual application SHA256: BA06AA8E47502D530FDBED4CF719C470480C5D8C9991BBEEEC6ADF985B1B4B91
+Actual application SHA256: D0801A32B0F6225752477C348F465A5E5319FFC1C1DA4A55694E10058DB30A0E
 Runner: Microsoft Windows NT 10.0.26100.0
 
 Name    Enabled DefaultOutboundAction
@@ -15,9 +15,8 @@ WellSpotAppOfflineCheck        True  Outbound  Block
 WellSpotHarnessOfflineCheck    True  Outbound  Block
 
 
-Unhandled exception. System.ArgumentNullException: Value cannot be null. (Parameter 'value')
-   at System.ArgumentNullException.Throw(String paramName)
-   at System.ArgumentNullException.ThrowIfNull(Object argument, String paramName)
-   at System.Windows.Application.set_StartupUri(Uri value)
-   at WellSpot.Desktop.Checks.Program.Main(String[] args) in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 55
+Unhandled exception. System.Exception: The component 'WellSpot.Desktop.Checks.Program+CheckApp' does not have a resource identified by the URI '/WellSpot;component/app.xaml'.
+   at System.Windows.Application.LoadComponent(Object component, Uri resourceLocator)
+   at WellSpot.Desktop.App.InitializeComponent() in /workspace/spotting_calculator/src/WellSpot.Desktop/App.xaml:line 1
+   at WellSpot.Desktop.Checks.Program.Main(String[] args) in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 56
 Harness exit code: -532462766
