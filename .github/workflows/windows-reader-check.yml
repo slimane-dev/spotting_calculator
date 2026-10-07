@@ -1,0 +1,50 @@
+name: WellSpot Windows reader regression
+on:
+  push:
+    branches: [wellspot-v0.5.1-windows-check]
+    paths:
+      - '.github/workflows/windows-reader-check.yml'
+      - 'Windows-Checks.zip'
+      - 'WellSpot-0.5.1-Windows-x64.zip'
+permissions:
+  contents: write
+jobs:
+  windows-reader:
+    runs-on: windows-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract the application and regression harness
+        shell: pwsh
+        run: |
+          Expand-Archive -LiteralPath WellSpot-0.5.1-Windows-x64.zip -DestinationPath app
+          Expand-Archive -LiteralPath Windows-Checks.zip -DestinationPath checks
+          $app = (Resolve-Path app/WellSpot.exe).Path
+          $checks = (Resolve-Path checks/WellSpot.Desktop.Checks.exe).Path
+          "Actual application SHA256: $((Get-FileHash $app -Algorithm SHA256).Hash)" | Set-Content windows-reader-report.txt
+          "Runner: $([System.Environment]::OSVersion.VersionString)" | Add-Content windows-reader-report.txt
+          Set-NetFirewallProfile -Profile Domain,Private,Public -DefaultOutboundAction Allow -Enabled True
+          New-NetFirewallRule -DisplayName WellSpotAppOfflineCheck -Direction Outbound -Program $app -Action Block | Out-Null
+          New-NetFirewallRule -DisplayName WellSpotHarnessOfflineCheck -Direction Outbound -Program $checks -Action Block | Out-Null
+          Get-NetFirewallProfile | Select-Object Name,Enabled,DefaultOutboundAction | Format-Table | Out-String | Add-Content windows-reader-report.txt
+          Get-NetFirewallRule -DisplayName WellSpotAppOfflineCheck,WellSpotHarnessOfflineCheck | Select-Object DisplayName,Enabled,Direction,Action | Format-Table | Out-String | Add-Content windows-reader-report.txt
+      - name: Execute finite Windows WPF and offline native-reader regressions
+        shell: pwsh
+        run: |
+          $app = (Resolve-Path app/WellSpot.exe).Path
+          $checks = (Resolve-Path checks/WellSpot.Desktop.Checks.exe).Path
+          & $checks --app-exe $app 2>&1 | Tee-Object -FilePath windows-reader-execution.txt
+          $result = $LASTEXITCODE
+          Get-Content windows-reader-execution.txt | Add-Content windows-reader-report.txt
+          "Harness exit code: $result" | Add-Content windows-reader-report.txt
+          if ($result -ne 0) { exit $result }
+      - name: Publish the test report in this validation branch
+        if: always()
+        shell: pwsh
+        run: |
+          if (-not (Test-Path windows-reader-report.txt)) { "Windows setup failed before the harness ran." | Set-Content windows-reader-report.txt }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add windows-reader-report.txt
+          git commit -m 'Record Windows reader regression results'
+          git push origin HEAD:wellspot-v0.5.1-windows-check
