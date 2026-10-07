@@ -1,11 +1,11 @@
 name: WellSpot Windows reader regression
 on:
   push:
-    branches: [wellspot-v0.5.1-windows-check]
+    branches: [wellspot-v0.5.2-windows-check]
     paths:
       - '.github/workflows/windows-reader-check.yml'
       - 'Windows-Checks.zip'
-      - 'WellSpot-0.5.1-Windows-x64.zip'
+      - 'WellSpot-0.5.2-Windows-x64.zip'
 permissions:
   contents: write
 jobs:
@@ -17,7 +17,7 @@ jobs:
       - name: Extract the application and regression harness
         shell: pwsh
         run: |
-          Expand-Archive -LiteralPath WellSpot-0.5.1-Windows-x64.zip -DestinationPath app
+          Expand-Archive -LiteralPath WellSpot-0.5.2-Windows-x64.zip -DestinationPath app
           Expand-Archive -LiteralPath Windows-Checks.zip -DestinationPath checks
           $app = (Resolve-Path app/WellSpot.exe).Path
           $checks = (Resolve-Path checks/WellSpot.Desktop.Checks.exe).Path
@@ -47,4 +47,4 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add windows-reader-report.txt
           git commit -m 'Record Windows reader regression results'
-          git push origin HEAD:wellspot-v0.5.1-windows-check
+          git push origin HEAD:wellspot-v0.5.2-windows-check
