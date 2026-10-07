@@ -15,8 +15,9 @@ WellSpotAppOfflineCheck        True  Outbound  Block
 WellSpotHarnessOfflineCheck    True  Outbound  Block
 
 
-Unhandled exception. System.Exception: The component 'WellSpot.Desktop.Checks.Program+CheckApp' does not have a resource identified by the URI '/WellSpot;component/app.xaml'.
-   at System.Windows.Application.LoadComponent(Object component, Uri resourceLocator)
-   at WellSpot.Desktop.App.InitializeComponent() in /workspace/spotting_calculator/src/WellSpot.Desktop/App.xaml:line 1
-   at WellSpot.Desktop.Checks.Program.Main(String[] args) in /workspace/spotting_calculator/checks/WellSpot.Desktop.Checks/Program.cs:line 56
-Harness exit code: -532462766
+Executing on Microsoft Windows 10.0.26100; process X64
+PASS Windows: compiled application resources and main-window XAML initialize
+PASS Windows: job writes use the isolated test root
+PASS Windows: main window offers a named picture-import action
+FAIL: Windows checks exceeded the 180-second process watchdog.
+Harness exit code: 2
